@@ -1,4 +1,4 @@
-# M12 Android Headless
+# Android Headless Linux
 
 A small, conservative Magisk-based boot layer for running a Linux Deploy-style Linux rootfs headlessly on rooted Android devices.
 
@@ -11,7 +11,7 @@ The project is **not tied to OpenClaw**. It provides a reusable Android boot mec
 - Starts the rootfs `sshd` on port 22.
 - Detects stale PID files by checking the process command line before treating sshd as alive.
 - Does **not** run a watchdog, kill processes, restart arbitrary services, or alter OpenClaw.
-- Includes an optional `M12 Safe RAM` module with conservative LMKD properties and no runtime process killing.
+- Includes an optional `Android Safe RAM` module with conservative LMKD properties and no runtime process killing.
 
 ## Verified reference setup
 
@@ -32,8 +32,8 @@ This is a device-specific verification, not a claim that every Android/Magisk/Li
 
 ```text
 modules/
-  m12-linux-headless-v1.0.0.zip
-  m12-safe-ram-v1.0.0.zip
+  android-linux-headless-v1.0.0.zip
+  android-safe-ram-v1.0.0.zip
 scripts/
   linuxdeploy-headless-start-fixed.sh
 ```
@@ -42,7 +42,7 @@ scripts/
 
 ### 1. Linux headless boot module
 
-Install `modules/m12-linux-headless-v1.0.0.zip` from Magisk, then ensure the companion start script is available at:
+Install `modules/android-linux-headless-v1.0.0.zip` from Magisk, then ensure the companion start script is available at:
 
 ```text
 /data/local/tmp/linuxdeploy-headless-start-fixed.sh
@@ -52,7 +52,7 @@ The boot module waits for Android boot completion and invokes that script once. 
 
 ### 2. Optional RAM tuning
 
-`modules/m12-safe-ram-v1.0.0.zip` is independent. It supplies conservative LMKD properties:
+`modules/android-safe-ram-v1.0.0.zip` is independent. It supplies conservative LMKD properties:
 
 ```text
 ro.lmk.use_psi=true
